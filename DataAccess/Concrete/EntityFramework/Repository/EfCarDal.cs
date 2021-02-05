@@ -34,7 +34,7 @@ namespace DataAccess.Concrete.EntityFramework.Repository
             }
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter = null)
+        public Car Get(Expression<Func<Car, bool>> filter)
         {
             using (ReCapProjectContext context = new ReCapProjectContext())
             {

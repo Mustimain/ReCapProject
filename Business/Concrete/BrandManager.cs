@@ -38,9 +38,22 @@ namespace Business.Concrete
             return _brandDal.GetAll();
         }
 
+        public Brand GetById(int Id)
+        {
+            return _brandDal.Get(b => b.BrandId == Id);
+        }
+
         public void Update(Brand brand)
         {
-            _brandDal.Update(brand);
+            if (brand.BrandName.Length > 2)
+            {
+                _brandDal.Update(brand);
+            }
+            else
+            {
+                Console.WriteLine("brand name must be greater than 2");
+            }
+
         }
     }
 }
