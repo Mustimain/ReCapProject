@@ -17,7 +17,6 @@ namespace Business.Abstract
 
         List<Car> GetCarsByBrandId(int brandId);
         List<Car> GetCarsByColourId(int colourId);
-        Car GetById(int Id);
 
     }
 }

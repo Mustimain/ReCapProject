@@ -39,11 +39,6 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public Car GetById(int Id)
-        {
-            return _carDal.Get(c => c.Id == Id);
-        }
-
         public List<Car> GetCarsByBrandId(int brandId)
         {
             return _carDal.GetAll(c => c.BrandId == brandId);
@@ -56,14 +51,7 @@ namespace Business.Concrete
 
         public void Update(Car car)
         {
-            if (car.DailyPrice > 0)
-            {
-                _carDal.Update(car);
-            }
-            else
-            {
-                Console.WriteLine("car's daily rent must be greater than 0");
-            }
+            _carDal.Update(car);
         }
     }
 }

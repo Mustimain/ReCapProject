@@ -33,7 +33,7 @@ namespace DataAccess.Concrete.EntityFramework.Repository
             }
         }
 
-        public Brand Get(Expression<Func<Brand, bool>> filter)
+        public Brand Get(Expression<Func<Brand, bool>> filter = null)
         {
             using (ReCapProjectContext context = new ReCapProjectContext())
             {

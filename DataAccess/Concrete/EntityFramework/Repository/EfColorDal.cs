@@ -32,7 +32,7 @@ namespace DataAccess.Concrete.EntityFramework.Repository
             }
         }
 
-        public Colour Get(Expression<Func<Colour, bool>> filter)
+        public Colour Get(Expression<Func<Colour, bool>> filter = null)
         {
             using (ReCapProjectContext context = new ReCapProjectContext())
             {

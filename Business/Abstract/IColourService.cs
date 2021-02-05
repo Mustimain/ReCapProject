@@ -13,6 +13,5 @@ namespace Business.Abstract
         void Update(Colour colour);
         void Delete(Colour colour);
 
-        Colour GetById(int Id);
     }
 }
