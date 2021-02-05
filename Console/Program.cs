@@ -1,6 +1,10 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework.Repository;
 using DataAccess.Concrete.InMemory;
+using Entities.Concrete;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Console
 {
@@ -8,12 +12,8 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
 
-            foreach (var cars in carManager.GetAll())
-            {
-                System.Console.WriteLine(cars.Description);
-            }
+           
         }
     }
 }
