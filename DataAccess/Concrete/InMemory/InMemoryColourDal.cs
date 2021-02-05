@@ -59,7 +59,7 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
 
-        public Colour Get(Expression<Func<Colour, bool>> filter = null)
+        public Colour Get(Expression<Func<Colour, bool>> filter)
         {
             throw new NotImplementedException();
         }

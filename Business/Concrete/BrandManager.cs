@@ -33,6 +33,11 @@ namespace Business.Concrete
             _brandDal.Delete(brand);
         }
 
+        public Brand Get(int brandId)
+        {
+            return _brandDal.Get(b => b.BrandId == brandId);
+        }
+
         public List<Brand> GetAll()
         {
             return _brandDal.GetAll();
@@ -40,7 +45,14 @@ namespace Business.Concrete
 
         public void Update(Brand brand)
         {
-            _brandDal.Update(brand);
+            if (brand.BrandName.Length > 2)
+            {
+                _brandDal.Update(brand);
+            }
+            else
+            {
+                Console.WriteLine("Brand name must be 2 big");
+            }
         }
     }
 }

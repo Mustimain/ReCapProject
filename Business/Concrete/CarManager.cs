@@ -34,6 +34,11 @@ namespace Business.Concrete
             _carDal.Delete(car);
         }
 
+        public Car Get(int carId)
+        {
+            return _carDal.Get(c=> c.Id == carId);
+        }
+
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
@@ -51,7 +56,14 @@ namespace Business.Concrete
 
         public void Update(Car car)
         {
-            _carDal.Update(car);
+            if (car.DailyPrice > 0)
+            {
+                _carDal.Update(car);
+            }
+            else
+            {
+                Console.WriteLine("car's daily rent must be greater than 0");
+            }
         }
     }
 }
