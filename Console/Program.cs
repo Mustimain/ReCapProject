@@ -13,9 +13,13 @@ namespace Console
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
-
             ColourManager colourManager = new ColourManager(new EfColorDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            UserManager userManager = new UserManager(new EfUserDal());
+
+
 
             Car car1 = new Car { Id = 10, BrandId = 2, ColourId = 1, DailyPrice = 255, Description = "Hybrid Otomatik", ModelYear = 2016 };
 
@@ -29,19 +33,26 @@ namespace Console
             // carManager.Delete(carManager.Get(2));
 
             // AllCarListele(carManager);
+
             
 
         }
 
         private static void AllCarListele(CarManager carManager)
         {
-            System.Console.WriteLine("ARAÇ LİSTESİ\n");
+           
+            var result = carManager.Get(2);
 
-
-            foreach (var car in carManager.GetCarDetail().Data)
+            if (result.Success)
             {
-                System.Console.WriteLine("Car Name: {0}      Brand Name: {1}     Colour Name: {2}     Daily Price: {3}", car.CarName, car.BrandName, car.ColourId, car.DailyPrice);
+                System.Console.WriteLine(result.Message);
             }
+            else
+            {
+                System.Console.WriteLine(result.Message);
+            }
+            
+            
         }
     }
 }
