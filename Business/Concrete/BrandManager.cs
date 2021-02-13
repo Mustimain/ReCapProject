@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,42 +17,48 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             if (brand.BrandName.Length > 2)
             {
                 _brandDal.Add(brand);
+
+                return new SuccessResult();
             }
             else
             {
-                Console.WriteLine("Brand name must be 2 big");
+                return new ErrorResult();
             }
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            return new SuccessResult();
         }
 
-        public Brand Get(int brandId)
+        public IResult Get(Brand brand)
         {
-            return _brandDal.Get(b => b.BrandId == brandId);
+            _brandDal.Get(b => b.BrandId == brand.BrandId);
+
+            return new SuccessResult();
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             if (brand.BrandName.Length > 2)
             {
                 _brandDal.Update(brand);
+                return new SuccessResult();
             }
             else
             {
-                Console.WriteLine("Brand name must be 2 big");
+                return new ErrorResult();
             }
         }
     }

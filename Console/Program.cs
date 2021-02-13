@@ -38,7 +38,7 @@ namespace Console
             System.Console.WriteLine("ARAÇ LİSTESİ\n");
 
 
-            foreach (var car in carManager.GetCarDetail())
+            foreach (var car in carManager.GetCarDetail().Data)
             {
                 System.Console.WriteLine("Car Name: {0}      Brand Name: {1}     Colour Name: {2}     Daily Price: {3}", car.CarName, car.BrandName, car.ColourId, car.DailyPrice);
             }
