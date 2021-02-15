@@ -8,58 +8,58 @@ using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.InMemory
 {
-    public class InMemoryColourDal : IColourDal
+    public class InMemoryColorDal : IColorDal
     {
-        public void Add(Colour colour)
+        public void Add(Color color)
         {
-            _colours.Add(colour);
-            Console.WriteLine("{0} Eklendi",colour.ColourName);
+            _colors.Add(color);
+            Console.WriteLine("{0} Eklendi",color.ColorName);
         }
 
-        public void Delete(Colour colour)
+        public void Delete(Color color)
         {
-            Colour _deleteToColour = _colours.SingleOrDefault(cl => cl.ColourId == colour.ColourId);
-            _colours.Remove(_deleteToColour);
+            Color _deleteToColor = _colors.SingleOrDefault(cl => cl.ColorId == color.ColorId);
+            _colors.Remove(_deleteToColor);
         }
 
-        List<Colour> _colours;
+        List<Color> _colors;
 
-        public InMemoryColourDal()
+        public InMemoryColorDal()
         {
-            _colours = new List<Colour>
+            _colors = new List<Color>
             {
 
-                new Colour{ColourId = 1,ColourName = "White"},
-                new Colour{ColourId = 2,ColourName = "Black"},
-                new Colour{ColourId = 3,ColourName = "Red"},
-                new Colour{ColourId = 4,ColourName = "Yellow"},
-                new Colour{ColourId = 5,ColourName = "Green"},
+                new Color{ColorId = 1,ColorName = "White"},
+                new Color{ColorId = 2,ColorName = "Black"},
+                new Color{ColorId = 3,ColorName = "Red"},
+                new Color{ColorId = 4,ColorName = "Yellow"},
+                new Color{ColorId = 5,ColorName = "Green"},
 
 
             };  
 
         }
 
-        public List<Colour> GetAll()
+        public List<Color> GetAll()
         {
-            return _colours;
+            return _colors;
         }
 
-        public void Update(Colour colour)
+        public void Update(Color colour)
         {
-            Colour updateToColour = _colours.SingleOrDefault(cl => cl.ColourId == colour.ColourId);
-            updateToColour.ColourId = colour.ColourId;
-            updateToColour.ColourName = colour.ColourName;
+            Color updateToColor = _colors.SingleOrDefault(cl => cl.ColorId == colour.ColorId);
+            updateToColor.ColorId = colour.ColorId;
+            updateToColor.ColorName = colour.ColorName;
 
             Console.WriteLine("Güncellendi");
         }
 
-        public List<Colour> GetAll(Expression<Func<Colour, bool>> filter = null)
+        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public Colour Get(Expression<Func<Colour, bool>> filter)
+        public Color Get(Expression<Func<Color, bool>> filter)
         {
             throw new NotImplementedException();
         }

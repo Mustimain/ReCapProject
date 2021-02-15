@@ -38,9 +38,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.userDeleted);
         }
 
-        public IResult Get(User user)
+        public IResult GetById(int userId)
         {
-            _userDal.Get(u => u.UserId == user.UserId);
+            _userDal.Get(u => u.UserId == userId);
 
             return new SuccessResult(Messages.userGet);
         }

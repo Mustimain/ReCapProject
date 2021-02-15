@@ -38,9 +38,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.rentalDeleted);
         }
 
-        public IResult Get(Rental rental)
+        public IResult GetById(int rentalId)
         {
-            _rentalDal.Get(r=> r.CarId == rental.CarId);
+            _rentalDal.Get(r=> r.CarId == rentalId);
 
             return new SuccessResult(Messages.rentalGet);
         }

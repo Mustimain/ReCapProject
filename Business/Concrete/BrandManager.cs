@@ -38,9 +38,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.brandDeleted);
         }
 
-        public IResult Get(Brand brand)
+        public IResult GetById(int brandId)
         {
-            _brandDal.Get(b => b.BrandId == brand.BrandId);
+            _brandDal.Get(b => b.BrandId == brandId);
 
             return new SuccessResult(Messages.brandGet);
         }

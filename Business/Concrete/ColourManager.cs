@@ -9,20 +9,20 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class ColourManager : IColourService
+    public class ColorManager : IColorService
     {
-        IColourDal _colourDal;
+        IColorDal _colorDal;
 
-        public ColourManager(IColourDal colourDal)
+        public ColorManager(IColorDal colorDal)
         {
-            _colourDal = colourDal;
+            _colorDal = colorDal;
         }
 
-        public IResult Add(Colour colour)
+        public IResult Add(Color color)
         {
-            if (colour.ColourName.Length > 2)
+            if (color.ColorName.Length > 2)
             {
-                _colourDal.Add(colour);
+                _colorDal.Add(color);
 
                 return new SuccessResult(Messages.colorAdded);
             }
@@ -32,29 +32,29 @@ namespace Business.Concrete
             }
         }
 
-        public IResult Delete(Colour colour)
+        public IResult Delete(Color color)
         {
-            ; _colourDal.Delete(colour);
+            ; _colorDal.Delete(color);
             return new SuccessResult(Messages.colorDeleted);
         }
 
-        public IResult Get(Colour colour)
+        public IResult GetById(int colorId)
         {
-            _colourDal.Get(c=> c.ColourId == colour.ColourId );
+            _colorDal.Get(c=> c.ColorId == colorId );
 
             return new SuccessResult(Messages.colorGet);
         }
 
-        public IDataResult<List<Colour>> GetAll()
+        public IDataResult<List<Color>> GetAll()
         {
-            return new SuccessDataResult<List<Colour>>(_colourDal.GetAll(),Messages.colorListed);
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.colorListed);
         }
 
-        public IResult Update(Colour colour)
+        public IResult Update(Color color)
         {
-            if (colour.ColourName.Length > 2)
+            if (color.ColorName.Length > 2)
             {
-                _colourDal.Update(colour);
+                _colorDal.Update(color);
                 return new SuccessResult(Messages.colorUpdated);
             }
             else
