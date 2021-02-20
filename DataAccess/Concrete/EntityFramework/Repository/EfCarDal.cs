@@ -25,14 +25,15 @@ namespace DataAccess.Concrete.EntityFramework.Repository
                              select new CarDetailDto
                              {
                                  Id = cr.Id,
+                                 CarName = br.BrandName,
                                  BrandId = br.BrandId,
-                                 ColorId = cl.ColorId,
                                  BrandName = br.BrandName,
+                                 ColorId = cl.ColorId,
                                  ColorName = cl.ColorName,
-                                 DailyPrice = cr.DailyPrice,
-                                 Description = cr.Description,
                                  ModelYear = cr.ModelYear,
-                                 CarName = br.BrandName
+                                 DailyPrice = cr.DailyPrice,
+                                 Description = cr.Description
+
                                  
 
                              };

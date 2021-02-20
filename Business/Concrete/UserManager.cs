@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,17 +20,14 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
-            if (user.FirstName.Length > 2 && user.LastName.Length > 2 && user.Email.Length > 10 && user.Password.Length < 16 && user.Password.Length > 8)
-            {
-                _userDal.Add(user);
-                return new SuccessResult(Messages.userAdded);
-            }
-            else
-            {
-                return new ErrorResult(Messages.errorAll);
-            }
+           
+             _userDal.Add(user);
+             return new SuccessResult(Messages.userAdded);
+            
         }
 
         public IResult Delete(User userr)
@@ -50,18 +49,15 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll(),Messages.userListed);
         }
 
+
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Update(User user)
         {
 
-            if (user.FirstName.Length > 2 && user.LastName.Length > 2 && user.Email.Length > 10 && user.Password.Length < 16 && user.Password.Length > 8)
-            {
-                _userDal.Update(user);
-                return new SuccessResult(Messages.userUpdated);
-            }
-            else
-            {
-                return new ErrorResult(Messages.userDeleted);
-            }
+            
+             _userDal.Update(user);
+             return new SuccessResult(Messages.userUpdated);
+            
 
         }
     }
