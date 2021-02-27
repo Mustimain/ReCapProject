@@ -4,7 +4,9 @@ using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace Console
 {
@@ -12,9 +14,8 @@ namespace Console
     {
         static void Main(string[] args)
         {
+ 
 
-            System.Console.WriteLine("Mustafa Ceylan");
-           
         }
     }
 }

@@ -7,6 +7,8 @@ namespace Business.Constants
     public class Messages
     {
 
+        public static string[] ValidImageFileTypes = { ".JPG", ".JPEG", ".PNG", ".TIF", ".TIFF", ".GIF", ".BMP", ".ICO" };
+
         public static string errorAll = "Incorrect operation please try again...";
 
         public static string carAdded = "The car was successfully added ";
@@ -52,6 +54,8 @@ namespace Business.Constants
         public static string rentalUpdated = "Rental Updated";
         public static string rentalListed = "Rental Listed";
         public static string rentalGet = "Rental Filtered";
+
+        public static string CarImageMustBeExists = "Böyle bi resim bulunamadı";
 
 
     }
