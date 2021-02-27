@@ -27,7 +27,7 @@ namespace Business.Concrete
         }
 
 
-        [ValidationAspect(typeof(CarImageValidator))]
+        // [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(CarImage carImage,IFormFile file)
         {
             IResult result = BusinessRules.Run(CheckIfImageLimitExpired(carImage.CarId),
@@ -81,7 +81,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        [ValidationAspect(typeof(CarImageValidator))]
+        // [ValidationAspect(typeof(CarImageValidator))]
         public IResult Update(CarImage carImage, IFormFile file)
         {
             IResult result = BusinessRules.Run(
