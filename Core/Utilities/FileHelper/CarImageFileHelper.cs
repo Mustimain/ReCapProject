@@ -39,19 +39,22 @@ namespace Core.Utilities.FileHelper
 
         public static void Update(IFormFile file, string oldPath)
         {
-            string extension = Path.GetExtension(file.FileName).ToUpper();
+
             using (FileStream fileStream = File.Open(oldPath,FileMode.Open))
             {
                 file.CopyToAsync(fileStream);
                 fileStream.Flush();
             }
 
-
         }
 
         public static void Delete(string path)
         {
-            File.Delete(path);
+            if (File.Exists(path.Replace("/", "\\")) && Path.GetFileName(path) != "default.png")
+            {
+                File.Delete(path.Replace("/", "\\"));
+
+            }
 
         }
 
