@@ -34,7 +34,7 @@ namespace Business.BusinessAspects.Autofac
                     return;
                 }
             }
-            throw new Exception("Boş Mesaj");
+            throw new Exception(Messages.AuthorizationDenied);
         }
     }
 }

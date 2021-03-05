@@ -2,6 +2,9 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -25,8 +28,9 @@ namespace Business.Concrete
         }
 
 
-        [SecuredOperation("product.add,admin")]
+        [SecuredOperation("admin,car.add")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             IResult result = BusinessRules.Run();
@@ -49,6 +53,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.carDelete);
         }
 
+        [PerformanceAspect(10)]
         public IResult GetById(int carId)
         {
             _carDal.Get(c => c.Id == carId);
@@ -56,6 +61,8 @@ namespace Business.Concrete
             return new SuccessResult(Messages.carFilter);
         }
 
+        [PerformanceAspect(10)]
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
 
@@ -93,6 +100,12 @@ namespace Business.Concrete
 
             return new SuccessResult(Messages.carUpdate);
             
+        }
+
+        [TransactionScopeAspect]
+        public IResult AddTransactionalTest(Car car)
+        {
+            throw new NotImplementedException();
         }
     }
 }

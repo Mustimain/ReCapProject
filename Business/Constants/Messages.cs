@@ -56,6 +56,7 @@ namespace Business.Constants
         public static string rentalGet = "Rental Filtered";
 
         public static string CarImageMustBeExists = "Böyle bi resim bulunamadı";
+        public static string AuthorizationDenied = "Yetkiniz Yok.";
 
 
     }

@@ -5,8 +5,8 @@ using System.Reflection;
 
 namespace Core.Utilities.Interceptors
 {
-    public partial class Class1
-    {
+
+   
         public class AspectInterceptorSelector : IInterceptorSelector
         {
             public IInterceptor[] SelectInterceptors(Type type, MethodInfo method, IInterceptor[] interceptors)
@@ -21,5 +21,5 @@ namespace Core.Utilities.Interceptors
             }
         }
 
-    }
+ 
 }
